@@ -24,25 +24,25 @@ public class StudentControllerImpl implements IStudentController {
 
     @GetMapping(path = "/list")
     @Override
-    public List<DtoStudent> getAllStudent() {
-        return studentServices.getAllStudents();
+    public List<DtoStudent> findAllStudentNative() {
+        return studentServices.findAllStudentNative();
     }
 
     @GetMapping(path = "/list/{id}")
     @Override
-    public DtoStudent getStuById(@PathVariable(name = "id") Integer id) {
-        return studentServices.getStudentById(id);
+    public DtoStudent findStudentByIdNative(@PathVariable(name = "id") Integer id) {
+        return studentServices.findStudentByIdNative(id);
     }
 
     @DeleteMapping(path = "/delete/{id}")
     @Override
-    public void deletedStudent(@PathVariable(name = "id") Integer id) {
-        studentServices.deletedStudent(id);
+    public void deleteStudentByIdNative(@PathVariable(name = "id") Integer id) {
+        studentServices.deleteStudentByIdNative(id);
     }
 
     @PutMapping(path = "/update/{id}")
     @Override
-    public DtoStudent updatedStudent(@PathVariable(name = "id") Integer id, @RequestBody DtoStudentIU dtoStudentIU) {
-        return studentServices.uptateStudent(id, dtoStudentIU);
+    public DtoStudent updateStudentIdNative(@PathVariable(name = "id") Integer id, @RequestBody DtoStudentIU dtoStudentIU) {
+        return studentServices.updateStudentIdNative(id, dtoStudentIU);
     }
 }

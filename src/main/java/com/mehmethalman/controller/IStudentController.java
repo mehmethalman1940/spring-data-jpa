@@ -8,8 +8,8 @@ import java.util.List;
 public interface IStudentController {
 
     public DtoStudent  saveStudent(DtoStudentIU dtoStudentIU);
-    public List<DtoStudent> getAllStudent();
-    public DtoStudent getStuById(Integer id);
-    public void deletedStudent(Integer id);
-    public DtoStudent updatedStudent(Integer id, DtoStudentIU dtoStudentIU);
+    public List<DtoStudent> findAllStudentNative();
+    public DtoStudent findStudentByIdNative(Integer id);
+    public void deleteStudentByIdNative(Integer id);
+    public DtoStudent updateStudentIdNative(Integer id, DtoStudentIU dtoStudentIU);
 }

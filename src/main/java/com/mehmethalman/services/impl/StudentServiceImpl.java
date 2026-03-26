@@ -22,16 +22,16 @@ public class StudentServiceImpl implements IStudentServices {
     @Override
     public DtoStudent saveStudent(DtoStudentIU dtoStudentIU) {
         Student student = new Student();
-        DtoStudent response= new DtoStudent();
+        DtoStudent dtoStudent = new DtoStudent();
         BeanUtils.copyProperties(dtoStudentIU, student);
         Student dbStudent = studentRepository.save(student);
-        BeanUtils.copyProperties(dbStudent, response);
-        return response;
+        BeanUtils.copyProperties(dbStudent, dtoStudent);
+        return dtoStudent;
     }
 
 
     @Override
-    public List<DtoStudent> getAllStudents() {
+    public List<DtoStudent> findAllStudentNative() {
         List<DtoStudent> dtoStudentList = new ArrayList<>();
         List<Student> studentList = studentRepository.findAll();
         for (Student student : studentList){
@@ -43,7 +43,7 @@ public class StudentServiceImpl implements IStudentServices {
     }
 
     @Override
-    public DtoStudent uptateStudent(Integer id, DtoStudentIU dtoStudentIU) {
+    public DtoStudent updateStudentIdNative(Integer id, DtoStudentIU dtoStudentIU) {
         DtoStudent dtoStudent  = new DtoStudent();
         Optional<Student> optional = studentRepository.findById(id);
         if (optional.isPresent()){
@@ -60,7 +60,7 @@ public class StudentServiceImpl implements IStudentServices {
     }
 
     @Override
-    public DtoStudent getStudentById(Integer id) {
+    public DtoStudent findStudentByIdNative(Integer id) {
         DtoStudent dtoStudent = new DtoStudent();
         Optional<Student> optionalStudent = studentRepository.findById(id);
         if (optionalStudent.isPresent()){
@@ -71,7 +71,7 @@ public class StudentServiceImpl implements IStudentServices {
     }
 
     @Override
-    public void deletedStudent(Integer id) {
+    public void deleteStudentByIdNative(Integer id) {
         Optional<Student> optionalStudent = studentRepository.findById(id);
         if (optionalStudent.isPresent()){
             studentRepository.delete(optionalStudent.get() );
