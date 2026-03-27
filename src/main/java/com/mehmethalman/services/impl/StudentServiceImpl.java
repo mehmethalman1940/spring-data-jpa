@@ -74,7 +74,7 @@ public class StudentServiceImpl implements IStudentServices {
     public void deleteStudentByIdNative(Integer id) {
         Optional<Student> optionalStudent = studentRepository.findById(id);
         if (optionalStudent.isPresent()){
-            studentRepository.delete(optionalStudent.get() );
+            studentRepository.deleteStudentByIdNative(id );
         }
 
 
